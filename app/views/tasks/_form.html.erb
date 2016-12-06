@@ -1,0 +1,31 @@
+<%= form_for(@task) do |t| %>
+  <%= render 'shared/error_messages' %>
+
+  <%= t.label :name %>
+  <%= t.text_field :name, class: 'form-control' %>
+
+  <%= t.label :execution_path %>
+  <%= t.text_field :execution_path, class: 'form-control' %>
+
+  <%= t.label :execution_server %>
+  <%= t.text_field :execution_server, class: 'form-control' %>
+
+  <%= t.label :start_date %>
+  <%= t.datetime_local_field :start_date, class: 'form-control' %>
+
+  <%= t.label :end_date %>
+  <%= t.datetime_local_field :end_date, class: 'form-control' %>
+
+  <% days = [:sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday] %>
+  <% days.each_with_index do |day, index| %>
+
+    <%# DAYNAMES starts on sunday. Array is initialized accordingly. %>
+    <%= t.label Date::DAYNAMES[index], class: "checkbox inline" do %>
+      <%= t.check_box day %>
+      <span><%= Date::DAYNAMES[index] %></span>
+    <% end %>
+  <% end %>
+
+  <%= t.submit "Submit", class: "btn btn-primary" %>
+
+<% end %>
