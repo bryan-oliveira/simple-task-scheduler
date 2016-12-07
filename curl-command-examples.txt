@@ -1,13 +1,17 @@
-# Create a task
-curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{ "name": "Example Task", "execution_path": "path", "execution_server": "server", "start_date": "2016-12-06 02:07:21", "end_date": "2016-12-07 02:07:21", "monday": "false", "tuesday": "false", "wednesday": "false", "thursday": "false", "friday": "false", "saturday": "false", "sunday": "false" }' localhost:3000/api/v1/tasks
+# [No_Auth] Create a task
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"task":{"name": "example", "execution_path": "path", "execution_server": "server", "start_date": "2016-12-06 02:07:21", "end_date": "2016-12-07 02:07:21"}}' localhost:3000/api/v1/tasks
 
-# Create a task
+# [Auth] Get all tasks
+curl -i -H "Accept: application/json" -H "Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODExNjExMzB9.-QSQ4q904pJmRwhZj7Lf4ud6bwQVFzFBkPz8pzkdKCw" localhost:3000/api/v1/tasks
 
+# [Auth] Get tasks by id
+curl -i -H "Accept: application/json" -H "Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODExNjExMzB9.-QSQ4q904pJmRwhZj7Lf4ud6bwQVFzFBkPz8pzkdKCw" localhost:3000/api/v1/tasks/1
 
-curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"name": "Example Task", "execution_path": "path", "execution_server": "server", "start_date": "2016-12-06 02:07:21", "end_date": "2016-12-07 02:07:21"}' localhost:3000/api/v1/tasks
-
-# Get all tasks
-curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST  localhost:3000/api/v1/tasks
-
-# Get user by id:
+# [No_Auth] Get user by id:
 curl -i -H "Accept: application/json" -H "Content-Type: application/json" localhost:3000/api/v1/tasks/1
+
+# Get auth token
+-> Make account
+-> Request token:
+
+      curl -H "Content-Type: application/json" -X POST -d '{"email":"vicdaruf@yahoo.com","password":"123123"}' http://localhost:3000/api/v1/authenticate

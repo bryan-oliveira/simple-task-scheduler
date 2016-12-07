@@ -5,7 +5,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   def setup
     @task = tasks(:example_task)
   end
-=begin
+
   test "tasks page should have correct title" do
     get tasks_path
     assert_select "title", full_title("All Tasks")
@@ -30,5 +30,5 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     get task_path @task
     assert_select "title", full_title(@task.name)
   end
-=end
+
 end

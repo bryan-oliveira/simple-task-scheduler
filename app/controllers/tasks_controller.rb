@@ -1,12 +1,6 @@
 class TasksController < ApplicationController
-  before_action :authenticate_request
+  # before_action :authenticate_request
   respond_to :html, :json
-
-  # Curl JSON example:
-  # curl -i -H "Accept: application/json" -H "Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODExNjExMzB9.-QSQ4q904pJmRwhZj7Lf4ud6bwQVFzFBkPz8pzkdKCw" localhost:3000/api/v1/tasks
-# "Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODExNjExMzB9.-QSQ4q904pJmRwhZj7Lf4ud6bwQVFzFBkPz8pzkdKCw"
-
-  #-H "Content-Type: application/json"
 
   def index
     @tasks = Task.all.paginate(page: params[:page])
@@ -49,17 +43,15 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    puts task_params
     respond_to do |format|
-      format.html {
-        if @task.save
-          flash[:info] = "Task created"
-          redirect_to tasks_path
-        else
-          render 'new'
-        end }
-
-      format.json {  }
+      if @task.save
+        format.html { flash[:info] = "Task created"
+                      redirect_to tasks_path}
+        format.json { render json: "Task created!", status: :created }
+      else
+        format.html { render 'new' }
+        format.json { render json: "Error!", status: :unprocessable_entity }
+      end
     end
   end
 

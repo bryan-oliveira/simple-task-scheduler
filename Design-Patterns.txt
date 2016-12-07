@@ -1,17 +1,37 @@
+===========================================================================
 Design/Programming patterns used throughout the application
+===========================================================================
 
-1. Strong parameters - used to encapsulate the permissible parameters. Allows reuse (DRY).
+1. Strong parameters - Used to encapsulate the permissible parameters. Allows reuse (DRY).
 
-2. Test first attitude -
+2. Test first attitude - A solid test suite is included. Unit tests and integration tests
+  are included. Most unit tests were done using Test-Driven-Development (TDD). Validators are
+  also used.
 
-3. DRY (Don't Repeat Yourself) -
+3. DRY (Don't Repeat Yourself) - As much as the timeframe allowed for, the DRY mindset
+  guided development.
 
-4. REST
+4. REST - According to the requirements specifications, both the web application and the
+  web service are RESTful. They provide a stateless interaction and CRUD operations.
 
-5. Single Responsibility Principle
+5. Single Responsibility Principle - Adhering to the Rails MVC model and single responsibility
+  principle, all code is appropriately partitioned in to it's proper place. Careful thought
+  went into keeping logic outside of controllers and views using helper methods.
 
-6. API versioning
+6. API versioning . The REST web service is built so that future updates can take place and not
+  interfere with previous versions. This is accomplished using route scopes.
 
-7. Stateless Authentication
+7. Stateless Authentication - Although not completely finished, most of the groundwork is layed
+  for stateless authentication. This is accomplished using token-based authentication. This works
+  by creating a user with an email/password combination. The password generates a token, and all
+  calls to the API require the token to grant acess.
 
-8. HTTP Status Codes
+8. HTTP Status Codes - HTTP status code best practices are used. The most appropriate codes are
+  returned for the different situations. (Ex: return 201 instead of 200 on create task).
+
+
+===========================================================================
+Technologies
+===========================================================================
+
+The server doubles as the web application host and web service provider. The back-end is built using Ruby on Rails (Rails v5.0.0.1 and Ruby v2.2). On the front-end, besides HTML and CSS, the Bootstrap framework is used to support development.

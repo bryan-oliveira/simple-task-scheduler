@@ -6,15 +6,19 @@ class User < ApplicationRecord
   # Downcase emails to normalize comparisons
   before_save :downcase_email
 
-  # Method reference
-  before_create :create_activation_digest
-
-
-  # Mandatory name attribute
-  validates :name,  presence: true, length: { maximum: 50 }
-
   # Mandatory email attribute with correct form a@b.c
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+
+  # Mandatory password attribute
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+
+  private
+
+  # Converts email to all lower-case.
+  def downcase_email
+    email.downcase!
+  end
+
 end

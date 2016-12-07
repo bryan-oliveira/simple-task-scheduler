@@ -1,8 +1,11 @@
 class AuthorizeApiRequest
   prepend SimpleCommand
 
-  def initialize(headers = {})
+  def initialize(headers = {}, p)
     @headers = headers
+    puts "====================================================="
+    # @headers.each {|h| puts h}
+    
   end
 
   def call

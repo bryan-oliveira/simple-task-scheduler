@@ -7,7 +7,6 @@ class UpdateTaskFlowTest < ActionDispatch::IntegrationTest
     @invalid_task = tasks(:invalid_task)
   end
 
-=begin
   test "successful edit with forwarding" do
     put update_task_url @task, params: { task: {id: 1}}
     assert_not flash[:success].empty?
@@ -22,6 +21,5 @@ class UpdateTaskFlowTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'tasks/edit'
   end
-=end
 
 end

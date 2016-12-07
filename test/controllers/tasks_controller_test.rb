@@ -5,7 +5,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   def setup
     @task = tasks(:example_task)
   end
-=begin
+
   test "should get index" do
     get tasks_url
     assert_response :success
@@ -35,6 +35,5 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     get edit_task_url @task
     assert_response :success
   end
-=end
 
 end

@@ -1,18 +1,16 @@
 Rails.application.routes.draw do
-  # get 'tasks/index'
-  # get 'tasks/new'
-  # get 'tasks/show'
-  # get 'tasks/destroy'
-  # get 'tasks/create'
-  # get 'tasks/update'
-  get '/authentication' => 'users#new'
+
+  root 'users#new'
   scope '/api' do
     scope '/v1' do
+      get '/' => 'application#api_docs'
       post '/authenticate' => 'authentication#authenticate'
 
       scope '/users' do
         root 'users#new', as: 'users'
         post '/' => 'users#create'
+        get '/signin' => 'users#signin', as: 'signin'
+        post '/signin' => 'application#authenticate_request'
       end
 
       scope '/tasks' do
@@ -28,12 +26,13 @@ Rails.application.routes.draw do
           put '/' => 'tasks#update', as: 'update_task'
           patch '/' => 'tasks#update'
           delete '/' => 'tasks#destroy', as: 'destroy_task'
+
           scope '/edit' do
             get '/' => 'tasks#edit', as: 'edit_task'
           end
-        end # /:id
+        end
 
-      end # /tasks
+      end
 
       scope '/task_logs' do
         get '/' => 'task_logs#index', as: 'task_logs'
