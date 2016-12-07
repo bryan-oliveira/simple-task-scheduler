@@ -1,0 +1,17 @@
+Design/Programming patterns used throughout the application
+
+1. Strong parameters - used to encapsulate the permissible parameters. Allows reuse (DRY).
+
+2. Test first attitude -
+
+3. DRY (Don't Repeat Yourself) -
+
+4. REST
+
+5. Single Responsibility Principle
+
+6. API versioning
+
+7. Stateless Authentication
+
+8. HTTP Status Codes

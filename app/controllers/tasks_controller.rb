@@ -1,11 +1,15 @@
 class TasksController < ApplicationController
+  before_action :authenticate_request
   respond_to :html, :json
 
   # Curl JSON example:
-  # curl -i -H "Accept: application/json" -H "Content-Type: application/json" localhost:3000/api/v1/tasks
+  # curl -i -H "Accept: application/json" -H "Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODExNjExMzB9.-QSQ4q904pJmRwhZj7Lf4ud6bwQVFzFBkPz8pzkdKCw" localhost:3000/api/v1/tasks
+# "Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODExNjExMzB9.-QSQ4q904pJmRwhZj7Lf4ud6bwQVFzFBkPz8pzkdKCw"
+
+  #-H "Content-Type: application/json"
 
   def index
-    @tasks = Task.all
+    @tasks = Task.all.paginate(page: params[:page])
     respond_to do |format|
       format.html
       format.json { render json: @tasks, status: :ok }
@@ -29,12 +33,17 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    Task.find(params[:id]).destroy
     respond_to do |format|
-      format.html {
-        flash[:success] = "Task deleted successfully"
-        redirect_to tasks_url }
-      format.json {}
+      @task = Task.find(params[:id])
+
+      if @task.destroy
+        format.html { flash[:success] = "Task deleted successfully"
+                      redirect_to tasks_url }
+        format.json { render json: "Task deleted successfully", status: :ok }
+      else
+        format.html { redirect_to tasks_path }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -64,16 +73,16 @@ class TasksController < ApplicationController
 
   def update
     respond_to do |format|
-      format.html {
-        @task = Task.find(params[:id])
-        # update_attributes performs attribute validation
-        if @task.update_attributes(task_params)
-          flash[:success] = "Task updated"
-          redirect_to @task
-        else
-          render 'edit'
-        end }
-      format.json { render json: "TODO" }
+      @task = Task.find(params[:id])
+      # update_attributes performs attribute validation
+      if @task.update_attributes(task_params)
+        format.html { flash[:success] = "Task updated"
+                      redirect_to @task }
+        format.json { render json: "Task updated", status: :ok }
+      else
+        format.html { render 'edit' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
     end
   end
 

@@ -1,5 +1,6 @@
 module ApplicationHelper
 
+  # Return string array with days of the week that equal true
   def get_days_to_execute_on(task)
     days = []
     if task.monday
@@ -24,6 +25,16 @@ module ApplicationHelper
       days.push('Sunday')
     end
     return days
+  end
+
+  # Returns the full title on a per-page basis.
+  def full_title(page_title = '')
+    base_title = "Simple Task Scheduler"
+    if page_title.empty?
+      base_title
+    else
+      page_title + " | " + base_title
+    end
   end
 
 end

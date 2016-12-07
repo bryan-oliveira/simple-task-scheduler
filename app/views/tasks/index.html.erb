@@ -1,2 +1,18 @@
+<% provide(:title, 'All Tasks') %>
 <h1>Task List</h1>
-  <%= render @tasks %>
+<%= will_paginate %>
+<table class="table table-hover table-bordered">
+  <thead>
+    <th>Task name</th>
+    <th>Execution Path</th>
+    <th>Execution Server</th>
+    <th>Start Date</th>
+  </thead>
+  <tbody>
+  <tr>
+    <%= render @tasks %>
+  </tr>
+  </tbody>
+</table>
+
+<%= will_paginate %>

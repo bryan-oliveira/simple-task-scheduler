@@ -1,71 +1,97 @@
+<% provide(:title, @task.name) %>
 <h1><%= @task.name %></h1>
 
 <div class="row">
-  <div class="col-sm-4">
 
+  <!-- Column -->
+  <div class="col-sm-4">
     <!-- Task details table -->
     <table class="table table-hover table-bordered">
       <thead><th colspan="2">Task details</th></thead>
       <tbody>
-      <tr>
-        <td><strong>Start date: </strong></td>
-        <td><%= @task.start_date %></td>
-      </tr>
-      <tr>
-        <td><strong>End date: </strong></td>
-        <td><%= @task.end_date %></td>
-      </tr>
-      <tr>
-        <td><strong>Execution path: </strong></td>
-        <td><%= @task.execution_path %></td>
-      </tr>
-      <tr>
-        <td><strong>Execution server: </strong></td>
-        <td><%= @task.execution_server %></td>
-      </tr>
+        <tr>
+          <td><strong>Start date: </strong></td>
+          <td><%= @task.start_date %></td>
+        </tr>
+        <tr>
+          <td><strong>End date: </strong></td>
+          <td><%= @task.end_date %></td>
+        </tr>
+        <tr>
+          <td><strong>Execution path: </strong></td>
+          <td><%= @task.execution_path %></td>
+        </tr>
+        <tr>
+          <td><strong>Execution server: </strong></td>
+          <td><%= @task.execution_server %></td>
+        </tr>
       </tbody>
     </table>
 
-    <!-- Execution days table -->
+    <!-- Task execution days table -->
     <table class="table table-hover table-bordered">
       <thead>
-      <tr>
-        <th>
-          <strong>Days to execute on:</strong>
-        </th>
-      </tr>
+        <tr>
+          <th>
+            <strong>Days to execute on:</strong>
+          </th>
+        </tr>
       </thead>
       <tbody>
-      <% get_days_to_execute_on(@task).each do |day| %>
-          <tr>
-            <td><%= day %></td>
-          </tr>
-      <% end %>
+        <% get_days_to_execute_on(@task).each do |day| %>
+        <tr>
+          <td><%= day %></td>
+        </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
 
+  <!-- Column -->
+  <div class="col-sm-6">
+    <!-- Task logs table -->
+    <table class="table table-hover table-bordered">
+      <thead>
+        <tr>
+          <th class="text-center" colspan="5">Task Logs</td>
+        </tr>
+        <tr>
+          <th>Status</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Errors</th>
+          <th>Execution Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <%= render @task.task_logs %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Column -->
   <div class="col-sm-2 text-right">
     <!-- Actions table -->
     <table class="table table-hover table-bordered">
       <thead>
-      <tr>
-        <th>
-          <strong>Actions:</strong>
-        </th>
-      </tr>
+        <tr>
+          <th>
+            <strong>Actions:</strong>
+          </th>
+        </tr>
       </thead>
       <tbody>
-      <tr>
-        <td><%= link_to "Edit Task", edit_task_path, id: @task.id %></td>
-      </tr>
-      <tr>
-        <td><%= link_to "Delete Task", @task, method: :delete,
-                        data: {confirm: "Are you sure you wish to delete this task?"} %></td>
-      </tr>
+        <tr>
+          <td><%= link_to "Edit Task", edit_task_path, id: @task.id %></td>
+        </tr>
+        <tr>
+          <td><%= link_to "Delete Task", @task, method: :delete,
+          data: {confirm: "Are you sure you wish to delete this task?"} %></td>
+        </tr>
       </tbody>
     </table>
-
   </div>
 
 </div>

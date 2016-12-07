@@ -1,0 +1,13 @@
+# Create a task
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{ "name": "Example Task", "execution_path": "path", "execution_server": "server", "start_date": "2016-12-06 02:07:21", "end_date": "2016-12-07 02:07:21", "monday": "false", "tuesday": "false", "wednesday": "false", "thursday": "false", "friday": "false", "saturday": "false", "sunday": "false" }' localhost:3000/api/v1/tasks
+
+# Create a task
+
+
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST -d '{"name": "Example Task", "execution_path": "path", "execution_server": "server", "start_date": "2016-12-06 02:07:21", "end_date": "2016-12-07 02:07:21"}' localhost:3000/api/v1/tasks
+
+# Get all tasks
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X POST  localhost:3000/api/v1/tasks
+
+# Get user by id:
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" localhost:3000/api/v1/tasks/1

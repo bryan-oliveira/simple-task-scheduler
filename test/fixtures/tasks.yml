@@ -1,11 +1,10 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: MyString
-  execution_path: MyString
-  execution_server: MyString
+example_task:
+  id: 1
+  name: Example Task
+  execution_path: path
+  execution_server: server
   start_date: 2016-12-06 02:07:21
-  end_date: 2016-12-06 02:07:21
+  end_date: 2016-12-07 02:07:21
   monday: false
   tuesday: false
   wednesday: false
@@ -14,16 +13,10 @@ one:
   saturday: false
   sunday: false
 
-two:
-  name: MyString
-  execution_path: MyString
-  execution_server: MyString
+invalid_task:
+  id: -1
+  name:
+  execution_path: path
+  execution_server: server
   start_date: 2016-12-06 02:07:21
-  end_date: 2016-12-06 02:07:21
-  monday: false
-  tuesday: false
-  wednesday: false
-  thursday: false
-  friday: false
-  saturday: false
-  sunday: false
+  end_date: 2016-12-07 02:07:21

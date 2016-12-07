@@ -1,0 +1,50 @@
+API USAGE DOCUMENT
+
+Content Type :
+   application/json
+
+Body:
+   Accepts json data
+
+   Sample task body:
+    {
+      "name": "Example Task",
+      "execution_path": "path",
+      "execution_server": "server",
+      "start_date": "2016-12-06 02:07:21",
+      "end_date": "2016-12-07 02:07:21",
+      "monday": "false",
+      "tuesday": "false",
+      "wednesday": "false",
+      "thursday": "false",
+      "friday": "false",
+      "saturday": "false",
+      "sunday": "false"
+    }
+
+API Requests:
+
+=> listing tasks
+   url: http://localhost:3000/api/v1/tasks
+   method: GET
+   body : not needed
+
+=> Retrieving task details
+  url: http://localhost:3000/api/v1/tasks/:id
+  method: GET
+  body : not needed
+
+=> Creating tasks
+   url: http://localhost:3000/api/v1/users
+   method: Post
+   Body : It can be xml or json
+
+=> Updating tasks
+  url: http://localhost:3000/api/v1/users/:id
+  method: PUT
+  Body : It can be xml or json
+
+=> Deleting task
+  url: http://localhost:3000/api/v1/users/:id
+  method: DELETE
+  body : not needed

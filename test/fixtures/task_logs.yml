@@ -1,0 +1,7 @@
+example_task_log:
+  name: Task Log Name
+  execution_status: Success
+  execution_start_date: 2016-12-06 12:35:56
+  error_log: No errors
+  execution_time: 50
+  task_id: 1
