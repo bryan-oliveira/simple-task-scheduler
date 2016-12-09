@@ -1,4 +1,6 @@
-# README
+# Simple Task Scheduler
+
+This repository contains a REST web application written in Ruby on Rails that allows to schedule tasks. It was written for an interview in which 3 days were given to devise an application that 
 
 ## Database creation and initialization
 
@@ -6,8 +8,9 @@ To create database:
 
 ```rails db:migrate```
 
-This creates a fresh copy of the database with all the tables used. To seed
-the database with random information:
+This creates a fresh copy of the database with all the tables used. 
+
+To seed the database with random information:
 
 ```rails db:seed```
 
@@ -26,8 +29,8 @@ were details to be decided upon that naturally were based on assumptions,
 educated guesses or personal perspective.
 
 From the contradicting points:
-  Create an agent/server application, which will execute tasks in client side
-  Server which will execute the task
+  "Create an agent/server application, which will execute tasks in client side"
+  "Server which will execute the task"
 
 It was unclear who would execute the task. I opted for the server in order to
 keep all information centralized in one place. Consequently, the agents can
