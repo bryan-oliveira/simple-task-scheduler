@@ -1,6 +1,6 @@
 # Simple Task Scheduler
 
-This repository contains a REST web application written in Ruby on Rails that allows to schedule tasks. It was written for an interview in which 3 days were given to devise an application that 
+This repository contains a REST web application written in Ruby on Rails that allows to schedule tasks. It was written for an interview in which 3 days were given to devise a REST Task Scheduler application.
 
 ## Database creation and initialization
 
